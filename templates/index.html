@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #444;
+            margin-bottom: 20px;
+        }
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #5cb85c;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .custom-file-upload:hover {
+            background-color: #4cae4c;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Translator</h1>
+        <form id="upload-form" action="/translate" method="post" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload">
+                Choose File
+            </label>
+            <input id="file-upload" type="file" name="file" required>
+            <br><br>
+            <button type="submit">Translate</button>
+        </form>
+        <div class="loading" id="loading">Translating, please wait...</div>
+    </div>
+    <script>
+        const fileInput = document.getElementById('file-upload');
+        const customFileUpload = document.querySelector('.custom-file-upload');
+        const form = document.getElementById('upload-form');
+        const loading = document.getElementById('loading');
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                customFileUpload.textContent = fileInput.files[0].name;
+            } else {
+                customFileUpload.textContent = 'Choose File';
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            loading.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
