@@ -105,7 +105,6 @@ nltk==3.8.1
 numpy==1.26.4
 oauthlib==3.2.2
 onnxruntime==1.18.0
-open-webui==0.1.125
 openai==1.30.5
 opencv-python==4.9.0.80
 opencv-python-headless==4.9.0.80
